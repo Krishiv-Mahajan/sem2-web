@@ -1,25 +1,31 @@
-let input=document.querySelector("input");
-let button=document.querySelector("#button");
-let city=undefined
-let loaction=document.querySelector(".location");
-button.addEventListener("click",()=>{
-    city=input.value.trim();
-    input.value="";
-})
+const input = document.querySelector("input");
+const button = document.querySelector("#button");
+const locationEl = document.querySelector(".location");
+const temperatureEl = document.querySelector(".temperature");
+const conditionEl = document.querySelector(".condition");
 
+button.addEventListener("click", () => {
+    const city = input.value.trim();
 
- const api_url=`http://api.weatherapi.com/v1/current.json?key=8288d8e7c3074919afc43346262301&q=${city}&aqi=no`
+    input.value = "";
 
-fetch(api_url)
-.then((response)=>response.json())
-.then((data)=>{
-    var temp=data.current.temp_c;
-    var name=data.location.name;
-    var country=data.location.country;
-    var status=data.current.condition.text;
-})
+    const apiUrl = `https://api.weatherapi.com/v1/current.json?key=8288d8e7c3074919afc43346262301&q=${city}&aqi=no`;
 
+    fetch(apiUrl)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            const temp = data.current.temp_c;
+            const name = data.location.name;
+            const country = data.location.country;
+            const status = data.current.condition.text;
 
-loaction.innerText=`${name},${country}`;
-document.querySelector(".temperature").innerText=`${temp}°C`;
-document.querySelector(".condition").innerText=`${status}`;
+            locationEl.innerText = `${name}, ${country}`;
+            temperatureEl.innerText = `${temp}°C`;
+            conditionEl.innerText = status;
+        })
+        .catch((error) => {
+            console.error("Error fetching weather data:", error);
+        });
+});
