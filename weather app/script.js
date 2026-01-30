@@ -6,12 +6,9 @@ const conditionEl = document.querySelector(".condition");
 
 button.addEventListener("click", () => {
     const city = input.value.trim();
-
     input.value = "";
-
-    const apiUrl = `https://api.weatherapi.com/v1/current.json?key=8288d8e7c3074919afc43346262301&q=${city}&aqi=no`;
-
-    fetch(apiUrl)
+    const api = `https://api.weatherapi.com/v1/current.json?key=8288d8e7c3074919afc43346262301&q=${city}&aqi=no`;
+    fetch(api)
         .then((response) => {
             return response.json();
         })
