@@ -3,6 +3,8 @@ const button = document.querySelector("#button");
 const locationEl = document.querySelector(".location");
 const temperatureEl = document.querySelector(".temperature");
 const conditionEl = document.querySelector(".condition");
+const timeEl = document.querySelector(".time");
+const dateEl = document.querySelector(".date");
 
 button.addEventListener("click", () => {
     const city = input.value.trim();
@@ -13,16 +15,25 @@ button.addEventListener("click", () => {
             return response.json();
         })
         .then((data) => {
-            const temp = data.current.temp_c;
-            const name = data.location.name;
-            const country = data.location.country;
-            const status = data.current.condition.text;
+            var temp = data.current.temp_c;
+            var name = data.location.name;
+            var country = data.location.country;
+            var status = data.current.condition.text;
+            var localtime = data.location.localtime;
+            var [date, time] = localtime.split(" ");
 
-            locationEl.innerText = `${name}, ${country}`;
-            temperatureEl.innerText = `${temp}°C`;
-            conditionEl.innerText = status;
+            dom(temp,name,country,status,date,time);
         })
         .catch((error) => {
-            console.error("Error fetching weather data:", error);
-        });
+            console.log( error);
+        });       
 });
+
+
+let dom= (temp, name, country, status, date, time) => {
+        locationEl.innerText = `${name}, ${country}`;
+        temperatureEl.innerText = `${temp}°C`;
+        conditionEl.innerText = status;
+        dateEl.innerText = date;
+        timeEl.innerText = time;
+        };
