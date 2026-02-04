@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="grand">
+        <div class="parent">
+            <div class="child">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        let grand=document.querySelector('.grand');
+        let parent=document.querySelector('.parent');
+        let child=document.querySelector('.child');
+        grand.addEventListener('click',()=>{
+            console.log('grand clicked');
+        });
+        parent.addEventListener('click',()=>{
+            console.log('parent clicked');
+        });
+        child.addEventListener('click',(e)=>{
+            console.log('child clicked');
+        });
+    </script>
+</body>
+</html>
