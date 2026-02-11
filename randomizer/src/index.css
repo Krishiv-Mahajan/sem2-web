@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  padding:0;
+  height: 100vh;
+  width: 100vw;
+
+}
+
+.big{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.small{
+  position: relative;
+  height: 500px;
+  width: 500px;
+  border:2px solid black;
+}
+
+.random{
+  position: relative;
+  height: 100px;
+  width: 100px;
+  background-color: blueviolet;
+  top: 0;
+  left: 0;
+}
+
